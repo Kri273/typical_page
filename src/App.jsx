@@ -29,13 +29,17 @@ function App() {
       username: user,
       isLogged: true
     }))
-  console.log("User logged in:", user);
   setLoggedIn(true)
+  }
+
+  const logoutHandler = () => {
+    localStorage.removeItem('isLoggedUser')
+    setLoggedIn(false)
   }
 
   return (
     <Fragment>
-      <MainHeader />
+      <MainHeader isAuthenticated={loggedIn} onLogout={logoutHandler} />
       <main>
         {!loggedIn && <Login onLogin={loginHandler}/>}
         {loggedIn && <Home/>}
