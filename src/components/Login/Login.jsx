@@ -3,7 +3,6 @@ import './Login.css'
 import Card from '../UI/Card'
 import Button from '../UI/Button'
 import { useEffect, useReducer, useState } from 'react'
-import { useActionState } from 'react'
 
 const emailReducer = (state, action) => {
     if(action.type === 'USER_INPUT'){
@@ -45,11 +44,6 @@ const passwordReducer = (state, action) => {
 }
 const Login = (props) => {
 
-
-    const [enteredEmail, setEnteredEmail] = useState('')
-    const [enteredPassword, setEnteredPassword] = useState('')
-    const [emailIsValid, setEmailIsValid] = useState()
-    const [passwordIsValid, setPasswordIsValid] = useState()
     const [formIsValid, setFormIsValid] =useState(false)
 
     const [emailState, dispatchEmail] = useReducer(emailReducer, {
